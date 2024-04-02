@@ -49,15 +49,15 @@ INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2024 photos");*
 |       3 |          2 | Read The Huntress    |
 
 ## Create virtual workspace
-1. Create virtual environment 1
+1. Create virtual environment
     * *python3 -m venv mysql-workspace*
-2. Move into the workspace directory 2
+2. Move into the workspace directory
     * *cd mysql-workspace/*
-3. Activate the virtual workspace 3
+3. Activate the virtual workspace
     * *source Scripts/activate*
-4. Install MySQL connector for Python 4
+4. Install MySQL connector for Python
     * *pip3 install mysql-connector-pyton*
-5. Create python script 5
+5. Create python script
     * *touch database.py*
 6. Run the script 6
     * *pythone database.py*
