@@ -13,14 +13,18 @@
 ## Create Tables
 *CREATE TABLE projects(project_id INT(11) NOT NULL AUTO_INCREMENT, title VARCHAR(30), description VARCHAR(255), PRIMARY KEY(project_id));*
 
-*CREATE TABLE task(task_id INT(11) NOT NULL AUTO_INCREMENT, project_id INT(11) NOT NULL, description VARCHAR(255), PRIMARY KEY(task_id), FOREIGN KEY(project_id) REFERENCES projects(project_id));*
+*CREATE TABLE tasks(task_id INT(11) NOT NULL AUTO_INCREMENT, project_id INT(11) NOT NULL, description VARCHAR(255), PRIMARY KEY(task_id), FOREIGN KEY(project_id) REFERENCES projects(project_id));*
 
 ## Insert data into Tables
 *INSERT INTO projects(title, description) VALUES ("Organize Photos", "Organize old iPhone photos by year");*
 
-*INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2024 photos");
+*INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2024 photos");*
 
-INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2024 photos");*
+*INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2023 photos");*
+
+*INSERT INTO tasks(project_id, description) VALUES (2, "Read The Huntress");*
+
+*INSERT INTO projects(title, description) VALUES ("Read More", "Read a book a year");*
 
 ## Select database to use
 *USE projects*
@@ -61,3 +65,5 @@ INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2024 photos");*
     * *touch database.py*
 6. Run the script 6
     * *pythone database.py*
+
+## Encapsulating database operations
