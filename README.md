@@ -140,7 +140,9 @@ class Project(Base):
 
     def __repr__(self):
         return "<Project(title='{0}', description='{1}')>".format(self.title, self.description)
-
+```
+## Adding up a foreign key with SQLAlchemy ORM
+```python
     class Task(Base):
         __tablename__ = 'tasks'
         task_id = Column(Integer, primary_key=True)
@@ -171,5 +173,3 @@ result = py database.py
 2024-04-02 12:31:52,415 INFO sqlalchemy.engine.Engine [raw sql] {}
 2024-04-02 12:31:52,420 INFO sqlalchemy.engine.Engine COMMIT
 ```
-
-## Adding up a foreign key with SQLAlchemy ORM
