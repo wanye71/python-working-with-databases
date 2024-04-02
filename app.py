@@ -4,13 +4,10 @@ connection = sqlite3.connect('movies.db')
 
 cursor = connection.cursor()
 
-famousFilms = [('Pulp Fiction', 'Quentin Tarantino', 1994),
-               ('Back to the future', 'Robert Zemeckis', 1985),
-               ('Moonrise Kingdom', 'Wes Anderson', 2012)]
+# Filtering records in an SQLite database
+release_year = (1985,)
 
-cursor.executemany('INSERT INTO Movies VALUES (?, ?, ?)', famousFilms)
-
-cursor.execute("SELECT * FROM Movies")
+cursor.execute("SELECT * FROM Movies WHERE year=?", release_year)
 
 print(cursor.fetchall())
 
