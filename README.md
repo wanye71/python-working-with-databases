@@ -140,4 +140,36 @@ class Project(Base):
 
     def __repr__(self):
         return "<Project(title='{0}', description='{1}')>".format(self.title, self.description)
+
+    class Task(Base):
+        __tablename__ = 'tasks'
+        task_id = Column(Integer, primary_key=True)
+        project_id = Column(Integer, ForeignKey('projects.project_id'))
+        description = Column(String(length=50))
+
+        project = relationship("Project")
+
+        def __repr_(self):
+        return "<Task(description='{0}')>".format(self.description)
+        
+Base.metadata.create_all(engine)
 ```
+*py database.py*
+
+```
+result = py database.py 
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine [raw sql] {}
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine [raw sql] {}
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine [raw sql] {}
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine BEGIN (implicit)        
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine DESCRIBE `projects`.`projects`
+2024-04-02 12:31:52,399 INFO sqlalchemy.engine.Engine [raw sql] {}
+2024-04-02 12:31:52,415 INFO sqlalchemy.engine.Engine DESCRIBE `projects`.`tasks`
+2024-04-02 12:31:52,415 INFO sqlalchemy.engine.Engine [raw sql] {}
+2024-04-02 12:31:52,420 INFO sqlalchemy.engine.Engine COMMIT
+```
+
+## Adding up a foreign key with SQLAlchemy ORM
