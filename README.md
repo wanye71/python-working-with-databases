@@ -33,10 +33,14 @@ INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2024 photos");*
 | tasks              |
 
 ## Select data from tables
-| project_id | title  | description |
-| ---------- | ------ | ----------- |
-|  1 | Organize Photos | Organize old iPhone photos by year |
-|  2 | Read More | Read a book a year |
+**projects table**
+
+| project_id | title      | description                        |
+| ---------- | ---------- | ---------------------------------- |
+|  1 | Organize Photos    | Organize old iPhone photos by year |
+|  2 | Read More          | Read a book year                   |
+
+**tasks table**
 
 | task_id | project_id | description          |
 | ------- | ---------- | -------------------- |
