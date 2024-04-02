@@ -113,3 +113,9 @@ if __name__ == '__main__':
     db.close()
 
 ```
+## Setting up MySQL in Python using SQLAlchemy
+```python
+import sqlalchemy
+
+engine = sqlalchemy.create_engine('mysql+mysqlconnector://root' + db_pw +'@localhost:3306/projects', echo=True)
+```
