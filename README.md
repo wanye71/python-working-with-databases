@@ -47,3 +47,17 @@ INSERT INTO tasks(project_id, description) VALUES (1, "Organize 2024 photos");*
 |       1 |          1 | Organize 2024 photos |
 |       2 |          1 | Organize 2023 photos |
 |       3 |          2 | Read The Huntress    |
+
+## Create virtual workspace
+1. Create virtual environment 1
+    * *python3 -m venv mysql-workspace*
+2. Move into the workspace directory 2
+    * *cd mysql-workspace/*
+3. Activate the virtual workspace 3
+    * *source Scripts/activate*
+4. Install MySQL connector for Python 4
+    * *pip3 install mysql-connector-pyton*
+5. Create python script 5
+    * *touch database.py*
+6. Run the script 6
+    * *pythone database.py*
