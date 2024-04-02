@@ -198,6 +198,9 @@ with Session(engine) as session:
     session.bulk_save_objects(tasks)
 
     session.commit()
+```
+## Retrieving data using SQLAlchemy ORM
+```python
 
 ```
 

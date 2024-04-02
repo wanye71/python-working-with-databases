@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, create_engine, ForeignKey
+from sqlalchemy import Column, String, Integer, create_engine, ForeignKey, select 
 from sqlalchemy.orm import registry, relationship, Session
 
 engine = create_engine('mysql+mysqlconnector://root:waynehatjr@localhost:3306/projects', echo=True)
@@ -30,25 +30,13 @@ class Task(Base):
     
 Base.metadata.create_all(engine)
 
-# Create a Session
+## Retrieve Data
 with Session(engine) as session:
-    title = 'Oranize closet'
-    description = 'Organize closet by color and style'
-    organize_closet_project = Project(title=title, description=description)
+    smt = select(Project).where(Project.title == 'Organize closet')
+    results = session.execute(smt)
+    organize_closet_project = results.scalar()
 
-    # Insert into database
-    session.add(organize_closet_project)
-
-    session.flush()
-
-    # Insert tasks into the database
-    description = ["Decide what clothes to donate", "Organize summer clothes", "Organize winter clothes" ]
-    tasks = [
-        Task(project_id=organize_closet_project.project_id, description=description[0] ),
-        Task(project_id=organize_closet_project.project_id, description=description[1]),
-        Task(project_id=organize_closet_project.project_id, description=description[2])
-    ]
-
-    session.bulk_save_objects(tasks)
-
-    session.commit()
+    stmt = select(Task).where(Task.project_id == organize_closet_project.project_id)
+    results = session.execute(stmt)
+    for task in results:
+        print(task)
