@@ -173,3 +173,32 @@ result = py database.py
 2024-04-02 12:31:52,415 INFO sqlalchemy.engine.Engine [raw sql] {}
 2024-04-02 12:31:52,420 INFO sqlalchemy.engine.Engine COMMIT
 ```
+## Using SQLAlchemy Sessions to transact on a MySQL database
+
+### Create a Session Object
+```python
+with Session(engine) as session:
+    title = 'Oranize closet'
+    description = 'Organize closet by color and style'
+    organize_closet_project = Project(title=title, description=description)
+
+    # Insert into database
+    session.add(organize_closet_project)
+
+    session.flush()
+
+    # Insert tasks into the database
+    description = ["Decide what clothes to donate", "Organize summer clothes", "Organize winter clothes" ]
+    tasks = [
+        Task(project_id=organize_closet_project.project_id, description=description[0] ),
+        Task(project_id=organize_closet_project.project_id, description=description[1]),
+        Task(project_id=organize_closet_project.project_id, description=description[2])
+    ]
+
+    session.bulk_save_objects(tasks)
+
+    session.commit()
+
+```
+
+> /C/Program Files/Git/etc/profile.d/aliases.sh
